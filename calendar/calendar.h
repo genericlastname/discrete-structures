@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 
+bool is_leap_year(int year);
+
 void print_line(int n);
 
 void print_header(int month, int year);
