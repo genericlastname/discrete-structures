@@ -6,6 +6,8 @@
 
 bool is_leap_year(int year);
 
+int get_weekday(int day, int month, int year);
+
 void print_line(int n);
 
 void print_header(int month, int year);
