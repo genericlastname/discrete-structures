@@ -1,4 +1,4 @@
-# HCSC 310 -- Data Structures and Algorithms @ Morehouse College
+# Discrete Structures @ Morehouse College
 
 ## Projects
 ### Calendar
