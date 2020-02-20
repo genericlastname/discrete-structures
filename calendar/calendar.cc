@@ -1,7 +1,7 @@
 #include "calendar.h"
 using namespace std;
 
-#define MAX_LINE_LENGTH 21
+#define MAX_LINE_LENGTH 28
 
 // ===================================================================
 // Return true if year is a leap year.
@@ -89,8 +89,83 @@ void print_header(int month, int year) {
 
 
     for (int i = 0; i < 7; i++)
-        cout << " " << weekdays[i];
+        cout << "  " << weekdays[i];
 
     cout << endl;
     print_line(MAX_LINE_LENGTH);
+}
+
+// ===================================================================
+// Print the actual days for each month on the proper day of the week.
+// ===================================================================
+// void print_days(int month, int year) {
+//     int month_lengths[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+//     int current_length = month_lengths[month];
+//     int start_weekday = get_weekday(1, month, year);
+    
+//     if (is_leap_year(year) && month == 1) {
+//         current_length += 1;
+//     }
+
+//     int current_weekday = 0;
+//     for (int days_printed = 1; days_printed <= current_length; days_printed++) {
+//         for (int col = 0; col < MAX_LINE_LENGTH; col++) {
+//             cout << "  ";
+
+//             // if month hasn't started yet print blank space.
+//             if (current_weekday < start_weekday && days_printed == 1) {
+//                 cout << "  ";
+//             }
+//             else {
+//                 if (to_string(days_printed).length() < 2)
+//                     cout << " " << days_printed;
+//                 else
+//                     cout << days_printed;
+
+//                 current_weekday++;
+//                 if (current_weekday > 6)
+//                     current_weekday = 0;
+//             }
+//         }
+//     }
+// }
+
+void print_days(int month, int year) {
+    int month_lengths[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+    int day = 1;
+    int current_weekday = 0;
+    int start_weekday = get_weekday(day, month, year);
+    int line = 0;
+
+    int leap = 0;
+    if (is_leap_year(year))
+        leap = 1;
+
+    while (day <= month_lengths[month] + leap) {
+        if (line + 4 > MAX_LINE_LENGTH)
+        {
+            cout << endl;
+            line = 0;
+        }
+
+        cout << "  ";
+
+        if (current_weekday < start_weekday) {
+            cout << "  ";
+            current_weekday++;
+        }
+        else {
+            if (to_string(day).length() < 2)
+                cout << " ";
+
+            cout << day;
+
+            day++;
+        }
+
+        line += 4;
+    }
+
+    cout << endl << endl;
 }
