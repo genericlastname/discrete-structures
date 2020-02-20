@@ -14,4 +14,6 @@ void print_header(int month, int year);
 
 void print_days(int month, int year);
 
+void print_calendar(int year);
+
 #endif

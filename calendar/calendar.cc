@@ -46,7 +46,7 @@ int get_weekday(int day, int month, int year) {
 
     int weekday = year_code + month_code + century_code + day;
     
-    if (is_leap_year(year))
+    if (is_leap_year(year) && (month == 0 || month == 1))
         weekday--;
 
     return weekday % 7;
@@ -98,38 +98,6 @@ void print_header(int month, int year) {
 // ===================================================================
 // Print the actual days for each month on the proper day of the week.
 // ===================================================================
-// void print_days(int month, int year) {
-//     int month_lengths[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-//     int current_length = month_lengths[month];
-//     int start_weekday = get_weekday(1, month, year);
-    
-//     if (is_leap_year(year) && month == 1) {
-//         current_length += 1;
-//     }
-
-//     int current_weekday = 0;
-//     for (int days_printed = 1; days_printed <= current_length; days_printed++) {
-//         for (int col = 0; col < MAX_LINE_LENGTH; col++) {
-//             cout << "  ";
-
-//             // if month hasn't started yet print blank space.
-//             if (current_weekday < start_weekday && days_printed == 1) {
-//                 cout << "  ";
-//             }
-//             else {
-//                 if (to_string(days_printed).length() < 2)
-//                     cout << " " << days_printed;
-//                 else
-//                     cout << days_printed;
-
-//                 current_weekday++;
-//                 if (current_weekday > 6)
-//                     current_weekday = 0;
-//             }
-//         }
-//     }
-// }
-
 void print_days(int month, int year) {
     int month_lengths[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
@@ -139,7 +107,7 @@ void print_days(int month, int year) {
     int line = 0;
 
     int leap = 0;
-    if (is_leap_year(year))
+    if (is_leap_year(year) && month == 1)
         leap = 1;
 
     while (day <= month_lengths[month] + leap) {
@@ -168,4 +136,17 @@ void print_days(int month, int year) {
     }
 
     cout << endl << endl;
+}
+
+
+// ===================================================================
+// Print the calendar for a whole year.
+// ===================================================================
+void print_calendar(int year) {
+    cout << endl;
+
+    for (int i = 0; i < 12; i++) {
+        print_header(i, year);
+        print_days(i, year);
+    }
 }
