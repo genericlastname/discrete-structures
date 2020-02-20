@@ -150,3 +150,12 @@ void print_calendar(int year) {
         print_days(i, year);
     }
 }
+
+bool is_all_numbers(string s) {
+    for (int i = 0; i < s.length(); i++) {
+        if (!isdigit(s[i]))
+            return false;
+    }
+
+    return true;
+}

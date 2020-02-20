@@ -16,4 +16,6 @@ void print_days(int month, int year);
 
 void print_calendar(int year);
 
+bool is_all_numbers(std::string s);
+
 #endif
