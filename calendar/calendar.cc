@@ -151,6 +151,9 @@ void print_calendar(int year) {
     }
 }
 
+// ===================================================================
+// Check if the string passed in is all numbers.
+// ===================================================================
 bool is_all_numbers(string s) {
     for (int i = 0; i < s.length(); i++) {
         if (!isdigit(s[i]))
