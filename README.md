@@ -1,4 +1,4 @@
-# Discrete Structures @ Morehouse College
+# HCSC 285 Discrete Structures
 
 ## Projects
 ### Calendar
